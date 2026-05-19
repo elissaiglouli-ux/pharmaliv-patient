@@ -58,10 +58,10 @@ export default function Parapharmacie() {
 
       <Nav panierCount={panier.length} />
 
-      {/* ── HERO avec photo lifestyle ── */}
+      {/* ── HERO avec photo produits para ── */}
       <div style={{ position:'relative', padding:'110px 24px 72px', textAlign:'center', color:'white', overflow:'hidden', minHeight:480, display:'flex', alignItems:'center', justifyContent:'center' }}>
         <img
-          src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1400&q=90&fit=crop&crop=center"
+          src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=1400&q=90&fit=crop&crop=center"
           alt=""
           style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }}
         />
@@ -81,20 +81,18 @@ export default function Parapharmacie() {
             Produits sélectionnés par vos pharmaciens,<br/>livrés en moins d'une heure.
           </p>
 
-          {/* Recherche */}
           <div style={{ display:'flex', gap:8, maxWidth:520, margin:'0 auto' }}>
             <input type="text" placeholder="🔍 Rechercher un produit, une marque..." value={search} onChange={e => setSearch(e.target.value)}
               style={{ flex:1, padding:'14px 16px', borderRadius:12, border:'none', fontFamily:'Inter,sans-serif', fontSize:14, color:'#0D2D3D', outline:'none', boxShadow:'0 4px 24px rgba(0,0,0,0.2)', minWidth:0 }}/>
-            <button style={{ padding:'14px 20px', background:'white', color:'#1B8C8C', border:'none', borderRadius:12, fontSize:14, fontWeight:700, cursor:'pointer', flexShrink:0, boxShadow:'0 4px 24px rgba(0,0,0,0.15)' }}>
+            <button style={{ padding:'14px 20px', background:'white', color:'#1B8C8C', border:'none', borderRadius:12, fontSize:14, fontWeight:700, cursor:'pointer', flexShrink:0 }}>
               Chercher
             </button>
           </div>
 
-          {/* Tags */}
           <div style={{ display:'flex', gap:8, justifyContent:'center', flexWrap:'wrap', marginTop:16 }}>
             {['☀️ Solaire', '💧 Skincare', '💊 Vitamines', '👶 Bébé'].map(tag => (
               <span key={tag} onClick={() => setSearch(tag.split(' ').slice(1).join(' '))}
-                style={{ background:'rgba(255,255,255,0.18)', color:'white', padding:'7px 15px', borderRadius:20, fontSize:12, fontWeight:600, cursor:'pointer', border:'1px solid rgba(255,255,255,0.25)', backdropFilter:'blur(4px)', transition:'all 0.2s' }}>
+                style={{ background:'rgba(255,255,255,0.18)', color:'white', padding:'7px 15px', borderRadius:20, fontSize:12, fontWeight:600, cursor:'pointer', border:'1px solid rgba(255,255,255,0.25)', backdropFilter:'blur(4px)' }}>
                 {tag}
               </span>
             ))}
@@ -125,8 +123,6 @@ export default function Parapharmacie() {
 
       {/* ── PRODUITS ── */}
       <div id="produits" style={{ maxWidth:1200, margin:'0 auto', padding:'32px 20px 80px' }}>
-
-        {/* Filtres + recherche */}
         <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:24, flexWrap:'wrap', gap:12 }}>
           <div style={{ display:'flex', gap:8, flexWrap:'wrap' }}>
             {filtres.map(f => (
@@ -139,7 +135,6 @@ export default function Parapharmacie() {
           <div style={{ fontSize:13, color:'#B0C4C4' }}>{produits.length} produit{produits.length>1?'s':''}</div>
         </div>
 
-        {/* Grille */}
         <div className="para-grid">
           {produits.map(p => (
             <div key={p.id} style={{ background:'white', borderRadius:16, overflow:'hidden', boxShadow:'0 2px 8px rgba(0,0,0,0.05)', border:'1px solid rgba(27,140,140,0.06)', transition:'all 0.25s' }}
