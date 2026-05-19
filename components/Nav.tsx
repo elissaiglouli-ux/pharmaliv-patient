@@ -65,6 +65,7 @@ export default function Nav({ panierCount = 0 }: { panierCount?: number }) {
 
           <div style={{ marginLeft:'auto', display:'flex', alignItems:'center', gap:10 }}>
 
+            {/* Panier */}
             <Link href="/panier" style={{ position:'relative', width:40, height:40, border:'1.5px solid rgba(27,140,140,0.2)', borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center', textDecoration:'none', background:path==='/panier'?'#EAF7F7':'white' }}>
               <svg width="18" height="18" fill="none" stroke="#1B8C8C" strokeWidth="1.8" viewBox="0 0 24 24">
                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
@@ -78,12 +79,17 @@ export default function Nav({ panierCount = 0 }: { panierCount?: number }) {
               )}
             </Link>
 
-            <div className="nav-compte" style={{ alignItems:'center' }}>
+            {/* Desktop — Vous êtes pharmacien + Mon compte */}
+            <div className="nav-compte" style={{ alignItems:'center', gap:10 }}>
+              <Link href="/pharmacien" style={{ display:'flex', alignItems:'center', gap:6, background:'white', color:'#1B8C8C', padding:'9px 16px', borderRadius:10, fontSize:13, fontWeight:600, textDecoration:'none', border:'1.5px solid rgba(27,140,140,0.3)' }}>
+                Vous êtes pharmacien ?
+              </Link>
               <Link href="/ordonnance" style={{ display:'flex', alignItems:'center', gap:6, background:'#1B8C8C', color:'white', padding:'9px 18px', borderRadius:10, fontSize:13, fontWeight:600, textDecoration:'none' }}>
                 Mon compte
               </Link>
             </div>
 
+            {/* Mobile — burger */}
             <button className="nav-burger" onClick={() => setMenuOuvert(!menuOuvert)}
               style={{ width:40, height:40, border:'1.5px solid rgba(27,140,140,0.2)', borderRadius:10, background:'white', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:5, cursor:'pointer', padding:0 }}>
               <div style={{ width:18, height:2, background:'#0D2D3D', borderRadius:2, transform:menuOuvert?'rotate(45deg) translate(5px, 5px)':'none', transition:'all 0.2s' }}/>
@@ -94,6 +100,7 @@ export default function Nav({ panierCount = 0 }: { panierCount?: number }) {
         </div>
       </nav>
 
+      {/* Menu déroulant mobile */}
       {menuOuvert && (
         <div style={{ position:'fixed', top:70, left:0, right:0, zIndex:499, background:'white', borderBottom:'1px solid rgba(0,0,0,0.08)', boxShadow:'0 8px 32px rgba(0,0,0,0.1)', padding:'16px 20px 24px' }}>
           {liens.map(l => (
@@ -104,6 +111,11 @@ export default function Nav({ panierCount = 0 }: { panierCount?: number }) {
             </Link>
           ))}
           <div style={{ height:1, background:'rgba(0,0,0,0.06)', margin:'12px 0' }}/>
+          <Link href="/pharmacien" onClick={() => setMenuOuvert(false)}
+            style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'14px 16px', borderRadius:12, color:'#1B8C8C', textDecoration:'none', fontSize:15, fontWeight:500, marginBottom:8, border:'1px solid rgba(27,140,140,0.2)' }}>
+            Vous êtes pharmacien ?
+            <span style={{ fontSize:18 }}>›</span>
+          </Link>
           <Link href="/ordonnance" onClick={() => setMenuOuvert(false)}
             style={{ display:'flex', alignItems:'center', justifyContent:'center', background:'#1B8C8C', color:'white', padding:'14px', borderRadius:12, fontSize:15, fontWeight:700, textDecoration:'none' }}>
             Mon compte
